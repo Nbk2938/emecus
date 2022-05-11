@@ -3,6 +3,7 @@
 THIS REPOSITORY IS AN ARCHIVE FOR MY MAGIC CUBE UNJUMBLING SYSTEM PROJECT, MCUS FOR SHORT.
 
 The project I'am developing is a fully automatic robot called emecus that resolves a rubiks cube.
+It's composed of a Hardawre part with motors a structure and a software side with the drivers, the arduino and the code run on a CPU of a computer.
 
 the results can be seen on youtube:
 - https://www.youtube.com/playlist?list=PLy7Yj5uiu0nqwHYuETZX1T-y-8dnMMtht
@@ -15,7 +16,7 @@ It contains varius programms:
     - to look at the code just go to the file of interest
     - to look the code of a hole programm download the folder in a the programm directory 
       such as "Rubikscube3" and open the folder with processing (IDE)
-  - all the "SchetchIno" files are written in arduino code and are .ino files
+  - all the "SchetchIno" files are written in C++ and are .ino files:
     - to look at the code just go to the file of interest
     - to look the code of a hole programm download the folder in a the programm directory 
       such as "sketchIno3" and open the folder with Arduino studio (IDE)
