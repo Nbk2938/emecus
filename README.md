@@ -1,12 +1,12 @@
 # emecus
 
-THIS REPOSITORY IS MADE AS AN ARCHIVE FOR MY PROJECT.
+THIS REPOSITORY IS AN ARCHIVE FOR MY MAGIC CUBE UNJUMBLING SYSTEM PROJECT, MCUS FOR SHORT.
 
-The project I'am developing is a fully automatic robot that resolves a rubiks cube.
-It contains varius programms:
+The project I'am developing is a fully automatic robot called emecus that resolves a rubiks cube.
 the results can be seen on youtube:
 - https://www.youtube.com/playlist?list=PLy7Yj5uiu0nqwHYuETZX1T-y-8dnMMtht
 
+It contains varius programms:
 - in the folder rubi (pde) you'll find:
   - the finished programm is contained in the folder "RUBY8" and 
   - the progress i made to the finisched programm
