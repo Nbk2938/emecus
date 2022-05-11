@@ -9,6 +9,12 @@ the results can be seen on youtube:
 - https://www.youtube.com/playlist?list=PLy7Yj5uiu0nqwHYuETZX1T-y-8dnMMtht
 
 It contains varius programms:
+
+- in the folder rupy (python) you'll find:
+  - the same program written in python code with the implementation of the two phase algorithm of Kochiemba 
+  - the programm with the fastest resolution time
+  - to view the hole code just download the hole package and open it with vs Code
+  
 - in the folder rubi (pde) you'll find:
   - the finished programm is contained in the folder "RUBY8" and 
   - the progress i made to the finisched programm
