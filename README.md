@@ -1,8 +1,11 @@
 # emecus
 
 THIS REPOSITORY IS MADE AS AN ARCHIVE FOR MY PROJECT.
+
 The project I'am developing is a fully automatic robot that resolves a rubiks cube.
 It contains varius programms:
+the results can be seen on youtube:
+- https://www.youtube.com/playlist?list=PLy7Yj5uiu0nqwHYuETZX1T-y-8dnMMtht
 
 - in the folder rubi (pde) you'll find:
   - the finished programm is contained in the folder "RUBY8" and 
