@@ -3,7 +3,7 @@
 THIS REPOSITORY IS AN ARCHIVE FOR MY MAGIC CUBE UNJUMBLING SYSTEM PROJECT, MCUS FOR SHORT.
 
 The project I'am developing is a fully automatic robot called emecus that resolves a rubiks cube.
-It's composed of a Hardawre part with motors a structure and a software side with the drivers, the arduino and the code run on a CPU of a computer.
+It's composed of a Hardawre part with motors a structure and a software part with the drivers, the arduino and the code run on a CPU of a computer.
 
 the results can be seen on youtube:
 - https://www.youtube.com/playlist?list=PLy7Yj5uiu0nqwHYuETZX1T-y-8dnMMtht
