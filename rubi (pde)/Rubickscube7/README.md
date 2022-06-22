@@ -13,7 +13,7 @@ This processing program does the following:
 - it is possible to connect the Arduino and upploading to it the folder "sketchIno2" 
 
 
-to run it:
+To run it:
 - download the entire subdirectory "Rubickscube7"
 - open it with processing IDE
 - run the programm
