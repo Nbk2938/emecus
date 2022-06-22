@@ -1,6 +1,11 @@
-This program is the fastest of all. it's written in python exept the Arduino code.
+This program is the fastest of all, it's the latest generatoin.
 
-to run the program:
+- it's written in python
+- it has implemented kochiembas algorithm for a faster resolution time
+- it's similar to Rubikscube8 but much more simpler
+- this because it's written in python
+
+To run the program:
 
 - download the entire directory named "ruby (python)"
 - open it with vs code
