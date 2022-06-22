@@ -4,7 +4,7 @@ This processing program does the following:
 - constructs a rubiks cube 3 x 3 composed of 27 cubie objects
 - you can individualy color the faces of every cubie 
 
-to run it:
+To run it:
 - download the entire subdirectory "Rubickscube1"
 - open it with processing IDE
 - run the programm
