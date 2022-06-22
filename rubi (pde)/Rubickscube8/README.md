@@ -1,6 +1,7 @@
 
 this program, is the successor of the rubikscube7.
-apparently it does not run if there isn't connected an arduino
+
+It does not run if there isn't a connection to an arduino.
 
 the improvements:
 - is more user friendly
