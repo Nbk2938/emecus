@@ -3,7 +3,8 @@ This processing program does the following:
 - creates a sketch with 3d graphics with the peasy library
 - constructs a rubiks cube 3 x 3 composed of 27 cubie objects
 - it does not make any animation of a rotation
-- you can make it do some moves by pressing the keys on the keyboard
+- you can make it do some moves by pressing the keys on the keyboard as in Rubikscube3
+
 - at first it executes a random scramble to the cube
 - after you can give it some comands:
   - to see how it resolves the cube till the pll part step by step, press the following sequence of keys in order:
@@ -32,7 +33,7 @@ This processing program does the following:
     - 'k' : z
     - 'K' : z'
     
-to run it:
+To run it:
 - download the entire subdirectory "Rubickscube1"
 - open it with processing IDE
 - run the programm
