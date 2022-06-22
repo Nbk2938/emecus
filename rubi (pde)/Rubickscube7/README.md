@@ -1,6 +1,6 @@
 
-this program, with the hardwarare components of the robot, is the first that's able to successfully solve the real cube
-it runs also if there isn't any external devices
+This program, with the hardwarare components of the robot, is the first that's able to successfully solve the real cube
+it runs also if there isn't any external hardware.
 
 This processing program does the following:
 - creates a sketch with 3d graphics with the peasy library
