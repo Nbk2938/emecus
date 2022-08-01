@@ -1,5 +1,5 @@
 
-void concatenateSolution(int partialSolution[]){
+void concatenateSolution(int partialSolution[]){ // concatenate integer arrays in to one
   if (solutionArray == null){
       solutionArray = partialSolution;
     }else {
@@ -8,19 +8,19 @@ void concatenateSolution(int partialSolution[]){
 }
 
 
-void sleep(int a){
+void sleep(int a){ // thread sleep. i'm not using this function 
   try{
     Thread.sleep(a);
    } catch (Exception e){}
 }
 
-void sendArray(byte s[]){
+void sendArray(byte s[]){                         //send byte array
   if(s.length > 64){                       
-      for(int i = 0; i < 64; i++){               //write to port the first 64 integers (port can't support more)
+      for(int i = 0; i < 64; i++){                //write to port the first 64 integers (port can't support more)
         port.write(s[i]);
       }
-      delay(640);                                //whait till port is clear (astimation off how much the time passes till arduino has read all data )
-      for(int i = 64; i <s.length; i++){    //write remaining itegers (assuming that the length of the array is less than 128)
+      delay(640);                                 //whait till port is clear (astimation off how much the time passes till arduino has read all data )
+      for(int i = 64; i <s.length; i++){          //write remaining itegers (assuming that the length of the array is less than 128)
         port.write(s[i]);
       }
     }
@@ -29,20 +29,20 @@ void sendArray(byte s[]){
     }
 }   
 
-int[] addHammingPrity(int []norm){
+int[] addHammingPrity(int []norm){ // add parity control to the message
   
   int hamming[] = new int[norm.length + 3];
-   hamming[0] = norm.length;                          // il primo numero è la lughezza del vettore originale.
+   hamming[0] = norm.length;                          //first number is the length of the significant values
   for(int i = 1; i < norm.length + 1 ; i++){
-    hamming[i] = norm[i-1];                           //ricopio il vettore in quello nuovo spostato di un posto.
-    hamming[norm.length +1] = parityDigit(norm);       //penultimo numero é un controllo del vettore originale. 
-    hamming[norm.length +2] = 100;                    //l'ultimo numero serpe ad arduno IDE a capire quando il vettore è finito.
+    hamming[i] = norm[i-1];                           
+    hamming[norm.length +1] = parityDigit(norm);       //add parity digit 
+    hamming[norm.length +2] = 100;                    //last digigt of message
   } 
   
   return hamming;
 }
 
-int parityDigit(int []c){  // simile a GTIN-chekdigit
+int parityDigit(int []c){  // similar to GTIN-chekdigit
   int parity;
   int sum = 0;
   int hammingArray [] = new int[c.length];
@@ -62,7 +62,7 @@ int parityDigit(int []c){  // simile a GTIN-chekdigit
   return parity;
 }
 
-byte[] intToByte (int []integer){
+byte[] intToByte (int []integer){ // int array in to byte array
   
   byte bite [] = new byte [integer.length];
   for(int i = 0; i < bite.length; i++){
@@ -71,7 +71,7 @@ byte[] intToByte (int []integer){
   return bite;
 }
 
-void Text(){
+void Text(){ //some text for user interace
   if (counter > scrambled -1) {    
     text(counter - scrambled , 120, 100);
     text("movimenti",160,100);
