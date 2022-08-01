@@ -1,5 +1,5 @@
 
-void concatenateSolution(int partialSolution[]){
+void concatenateSolution(int partialSolution[]){   // concatenate integer arrays in to one
   if (solutionArray == null){
       solutionArray = partialSolution;
     }else {
@@ -7,20 +7,40 @@ void concatenateSolution(int partialSolution[]){
     }
 }
 
+void scrambleOnes(){                              // random scramble generator. i'm not using this function
 
-void sleep(int a){
+for (int i = 0; i < scrambled +1; i++) {
+      int r = int(random(allMoves.length - 6));   // creating random moves 
+      scrambledArray [i] = r;
+    
+      Move m = allMoves[r];
+      sequence.add(m);                            //  saving the random moves in an arraylist of moves 
+      m.complete();                               //  scrambeling the cube virtually 
+    }
+
+  shit++;
+  //println(scrambledArray);
+}
+
+void takeSolutionOnes() {                         // create solution. i'm not using this function
+  solution.createSolution(); 
+  //println(solutionArray);
+  shit++;
+}
+
+void sleep(int a){                                // thread sleep. i'm not using this function
   try{
     Thread.sleep(a);
    } catch (Exception e){}
 }
 
-void sendArray(byte s[]){
+void sendArray(byte s[]){                         //send byte array
   if(s.length > 64){                       
-      for(int i = 0; i < 64; i++){               //write to port the first 64 integers (port can't support more)
+      for(int i = 0; i < 64; i++){                //write to port the first 64 integers (port can't support more)
         port.write(s[i]);
       }
-      delay(640);                                //whait till port is clear (astimation off how much  time passes till arduino has read all data )
-      for(int i = 64; i <s.length; i++){    //write remaining itegers (assuming that the length of the array is less than 128)
+      delay(640);                                 //whait till port is clear (astimation off how much  time passes till arduino has read all data )
+      for(int i = 64; i <s.length; i++){          //write remaining itegers (assuming that the length of the array is less than 128)
         port.write(s[i]);
       }
     }
@@ -29,14 +49,14 @@ void sendArray(byte s[]){
     }
 }   
 
-int[] addChekNumbers(Integer []norm){
+int[] addChekNumbers(Integer []norm){             // add parity control to the message
   
   int bro[] = new int[norm.length + 3];
-   bro[0] = norm.length;                          // il primo numero è la lughezza del vettore originale.
+   bro[0] = norm.length;                          //first number is the length of the significant values
   for(int i = 1; i < norm.length + 1 ; i++){
-    bro[i] = norm[i-1];                           //ricopio il vettore in quello nuovo spostato di un posto.
-    bro[norm.length +1] = checkDigit(norm);       //penultimo numero é un controllo del vettore originale. 
-    bro[norm.length +2] = 100;                    //l'ultimo numero serpe ad arduno IDE a capire quando il vettore è finito.
+    bro[i] = norm[i-1];                           
+    bro[norm.length +1] = checkDigit(norm);       //add parity digit 
+    bro[norm.length +2] = 100;                    //last digigt of message
   } 
   
   return bro;
@@ -45,17 +65,17 @@ int[] addChekNumbers(Integer []norm){
 int[] addChekNumbers1(int []norm){
   
   int bro[] = new int[norm.length + 3];
-   bro[0] = norm.length;                          // il primo numero è la lughezza del vettore originale.
+   bro[0] = norm.length;                          
   for(int i = 1; i < norm.length + 1 ; i++){
-    bro[i] = norm[i-1];                           //ricopio il vettore in quello nuovo spostato di un posto.
-    bro[norm.length +1] = checkDigit1(norm);       //penultimo numero é un controllo del vettore originale. 
-    bro[norm.length +2] = 100;                    //l'ultimo numero serpe ad arduno IDE a capire quando il vettore è finito.
+    bro[i] = norm[i-1];                           
+    bro[norm.length +1] = checkDigit1(norm);      
+    bro[norm.length +2] = 100;                    
   } 
   
   return bro;
 }
 
-int checkDigit(Integer []c){  // simile a GTIN-chekdigit
+int checkDigit(Integer []c){                      // similar to GTIN-chekdigit
   int chek;
   int sum = 0;
   int multiply [] = new int[c.length];
@@ -75,7 +95,7 @@ int checkDigit(Integer []c){  // simile a GTIN-chekdigit
   return chek;
 }
 
-int checkDigit1(int []c){  // simile a GTIN-chekdigit
+int checkDigit1(int []c){                       // similar to GTIN-chekdigit
   int chek;
   int sum = 0;
   int multiply [] = new int[c.length];
@@ -95,7 +115,7 @@ int checkDigit1(int []c){  // simile a GTIN-chekdigit
   return chek;
 }
 
-byte[] intToByte (int []a){
+byte[] intToByte (int []a){                    // int array in to byte array
   
   byte b [] = new byte [a.length];
   for(int i = 0; i < b.length; i++){
@@ -103,8 +123,8 @@ byte[] intToByte (int []a){
   }
   return b;
 }
-                                  //COntrolla  
-void showSequence(){
+                                  
+void showSequence(){ //user input scramble
   String fuls;
   String fuld;
   String fulf;
