@@ -1,6 +1,6 @@
 class OLL{
 
-void startOLL(){
+void startOLL(){ //creates partial solution. compleating the jellow face on the cube. orientation of last layer
   int[] temp_0 = lastLayerOrientation_0();
   int[] temp_1 = lastLayerOrientation_1();
   int[] temp_2 = lastLayerOrientation_2();
@@ -39,12 +39,12 @@ void startOLL(){
   
 //---------------------------------------------------------------------------
 
-int[] lastLayerOrientation_0(){
+int[] lastLayerOrientation_0(){ //check specific permutation of cubies
   int[] oll = null;
-  int[] top ={0, 1, 2, 9, 11, 18,19, 20};
+  int[] top ={0, 1, 2, 9, 11, 18,19, 20}; // last layer cubies
   
 
-    for(int i: top){
+    for(int i: top){ //specific permutation 1
       if((cube[i].x==1)&&(cube[i].z==1)&&(cube[i].faces[3].normal.z==1)){
         for(int i1: top){
         if((cube[i1].x==1)&&(cube[i1].z==0)&&(cube[i1].faces[3].normal.y==-1)){
@@ -63,7 +63,7 @@ int[] lastLayerOrientation_0(){
                       int[] temp ={7, 2, 6, 2, 7, 2, 2, 6};
                       oll = temp;
     }}}}}}}}}}}}}}}}
-    for(int i: top){
+    for(int i: top){ //specific permutation 1 but turned 90° 
       if((cube[i].x==1)&&(cube[i].z==1)&&(cube[i].faces[3].normal.y==-1)){
         for(int i1: top){
         if((cube[i1].x==1)&&(cube[i1].z==0)&&(cube[i1].faces[3].normal.y==-1)){
@@ -82,7 +82,7 @@ int[] lastLayerOrientation_0(){
                       int[] temp ={11, 2, 10, 2, 11, 2, 2, 10};
                       oll = temp;
     }}}}}}}}}}}}}}}}
-    for(int i: top){
+    for(int i: top){ //specific permutation 1 but turned 180° 
       if((cube[i].x==1)&&(cube[i].z==1)&&(cube[i].faces[3].normal.z==1)){
         for(int i1: top){
         if((cube[i1].x==1)&&(cube[i1].z==0)&&(cube[i1].faces[3].normal.y==-1)){
@@ -101,7 +101,7 @@ int[] lastLayerOrientation_0(){
                       int[] temp ={4, 2, 5, 2, 4, 2, 2, 5};
                       oll = temp;
     }}}}}}}}}}}}}}}}
-    for(int i: top){
+    for(int i: top){ //specific permutation 1 but turned 270° 
       if((cube[i].x==1)&&(cube[i].z==1)&&(cube[i].faces[3].normal.z==1)){
         for(int i1: top){
         if((cube[i1].x==1)&&(cube[i1].z==0)&&(cube[i1].faces[3].normal.y==-1)){
@@ -120,7 +120,7 @@ int[] lastLayerOrientation_0(){
                       int[] temp ={8, 2, 9, 2, 8, 2, 2, 9};
                       oll = temp;
     }}}}}}}}}}}}}}}}
-    for(int i: top){
+    for(int i: top){ //specific permutation 2
       if((cube[i].x==1)&&(cube[i].z==1)&&(cube[i].faces[3].normal.x==1)){
         for(int i1: top){
         if((cube[i1].x==1)&&(cube[i1].z==0)&&(cube[i1].faces[3].normal.y==-1)){
@@ -139,7 +139,7 @@ int[] lastLayerOrientation_0(){
                       int[] temp ={5, 3, 4, 3, 5, 2, 2, 4};
                       oll = temp;
     }}}}}}}}}}}}}}}}
-    for(int i: top){
+    for(int i: top){ //specific permutation 2 but turned 90° 
       if((cube[i].x==1)&&(cube[i].z==1)&&(cube[i].faces[3].normal.x==1)){
         for(int i1: top){
         if((cube[i1].x==1)&&(cube[i1].z==0)&&(cube[i1].faces[3].normal.y==-1)){
@@ -158,7 +158,7 @@ int[] lastLayerOrientation_0(){
                       int[] temp ={9, 3, 8, 3, 9, 2, 2, 8};
                       oll = temp;
     }}}}}}}}}}}}}}}}
-    for(int i: top){
+    for(int i: top){ //specific permutation 2 but turned 180° 
       if((cube[i].x==1)&&(cube[i].z==1)&&(cube[i].faces[3].normal.y==-1)){
         for(int i1: top){
         if((cube[i1].x==1)&&(cube[i1].z==0)&&(cube[i1].faces[3].normal.y==-1)){
@@ -177,7 +177,7 @@ int[] lastLayerOrientation_0(){
                       int[] temp ={6, 3, 7, 3, 6, 2, 2, 7};
                       oll = temp;
     }}}}}}}}}}}}}}}}
-    for(int i: top){
+    for(int i: top){ //specific permutation 2 but turned 270° 
       if((cube[i].x==1)&&(cube[i].z==1)&&(cube[i].faces[3].normal.x==1)){
         for(int i1: top){
         if((cube[i1].x==1)&&(cube[i1].z==0)&&(cube[i1].faces[3].normal.y==-1)){
