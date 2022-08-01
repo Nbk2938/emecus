@@ -1,16 +1,17 @@
    
    
-void keyPressed() {                    // interface per l'operatore.
+void keyPressed() {                    // for user interface
 
   if (key == ENTER){
-    if(enterPressed == false){
+    
+    if(enterPressed == false){ //scramble sequence is saved
       stopTiping = true;
       cam.reset();
-      solution.createSolution();
+      solution.createSolution(); // searc for solution
       
       Integer [] blob = sequenceInToNubers.toArray(new Integer [0]);
       sendScrambled = intToByte(addChekNumbers(blob));
-      sendArray(sendScrambled);
+      sendArray(sendScrambled); //Send scrambled sequence to arduino
       cam.reset();
       println("mischiaggio in corso...");
       println(" ");
@@ -18,18 +19,19 @@ void keyPressed() {                    // interface per l'operatore.
       enterPressed = true;
     }
   }
-  if (key == 's'){   // quando sciaccio 's' aggiugo la soluzione alla sequenza.
+  if (key == 's'){   //begin solution process
     if(keySPressed == false){
       if(ArduinoReadyForSolution){
         
-        sendSolution = intToByte(addChekNumbers1(solutionArray));
+        sendSolution = intToByte(addChekNumbers1(solutionArray));//send solution sequence to arduino
+        //printArray(addChekNumbers1(solutionArray));
         sendArray(sendSolution);
         cam.reset();
         println("risolvendo...");
         println(" ");
         //println(solutionArray);
         
-        sleep(500);
+        sleep(500); 
          
         //for(int i : solutionArray){ 
          // Move q = allMoves[i];
@@ -37,13 +39,13 @@ void keyPressed() {                    // interface per l'operatore.
           
          //}
          keySPressed = true;
-         whatch.start();
+         whatch.start(); // start whatch
       }
     }
   }
             
-  if(stopTiping == false){
-   switch(key)     
+  if(stopTiping == false){ //user input recognition
+   switch(key)     //specific keys rappresent different moves
    {
      case 'f':
      sequenceInToNubers.add(8);
@@ -83,7 +85,7 @@ void keyPressed() {                    // interface per l'operatore.
      case 'D':
      sequenceInToNubers.add(0);
      sequence.add(D); currentMove = sequence.get(counter); currentMove.start(); currentMove.update();
-     //showSequence();
+    //showSequence();
      break;
      case 'l':
      sequenceInToNubers.add(7);
