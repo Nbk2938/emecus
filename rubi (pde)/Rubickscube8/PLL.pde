@@ -1,21 +1,21 @@
 class PLL{
 
 
-void startPLL(){
-  int[] temp_0 = lastLayerPermutation_0();
-  int[] temp_1 = lastLayerPermutation_1();
-  int[] temp_2 = lastLayerPermutation_2();
-    
-    if(temp_0 != null){
-      concatenateSolution(temp_0);
-      for(int i : temp_0){
-        Move q = allMoves[i];
-        //sequenceSolve.add(q);
-        q.complete();
-      }
+void startPLL(){ //partial solution. completes the hole cube.permutation of thre last layer
+  int[] temp_0 = lastLayerPermutation_0(); //it's a nightmare. just cicle trugh every single permutation and different rotations
+  int[] temp_1 = lastLayerPermutation_1(); 
+  int[] temp_2 = lastLayerPermutation_2(); 
+  
+  if(temp_0 != null){                    
+    concatenateSolution(temp_0);
+    for(int i : temp_0){
+      Move q = allMoves[i];
+      //sequenceSolve.add(q);
+      q.complete();
+    }
     //println("cubo completo");
   }
-  else  if(temp_1 != null){
+  else if(temp_1 != null){
     concatenateSolution(temp_1);
     for(int i : temp_1){
       Move q = allMoves[i];
@@ -24,7 +24,7 @@ void startPLL(){
     }
    //println("cubo completo");
   }
-  else  if(temp_2 != null){
+  else if(temp_2 != null){
     concatenateSolution(temp_2);
     for(int i : temp_2){
       Move q = allMoves[i];
@@ -33,6 +33,17 @@ void startPLL(){
     }
    //eprintln("cubo completo");
   }
+  
+  int[] temp_3 = checkForUTurns();
+  if(temp_3 !=null){
+    concatenateSolution(temp_3);
+    for(int i : temp_3){
+      Move q = allMoves[i];
+      //sequenceSolve.add(q);
+      q.complete();
+    }
+  }
+  
 }
 
 
@@ -1452,7 +1463,7 @@ int[] lastLayerPermutation_0(){
 
   return pll;
 }
-
+//---------------------------------------------------------------------------------------------------
 int[] lastLayerPermutation_1(){
   int[] pll = null;
   
@@ -3163,7 +3174,7 @@ int[] lastLayerPermutation_1(){
   }}}}}}}}  
   return pll;
 }
-
+//------------------------------------------------------------------------------------------------------
 int[] lastLayerPermutation_2(){
   int[] pll = null;
   
@@ -3259,6 +3270,47 @@ int[] lastLayerPermutation_2(){
 
   return pll;
 }
+//-------------------------------------------------------------
+int [] checkForUTurns(){
+  int[] pll = null;
+  
+  if((cube[2].x==1)&&(cube[2].z==1)){
+  if((cube[1].x==0)&&(cube[1].z==1)){
+  if((cube[0].x==-1)&&(cube[0].z==1)){
+  if((cube[11].x==1)&&(cube[11].z==0)){
+  if((cube[9].x==-1)&&(cube[9].z==0)){  //U
+  if((cube[20].x==1)&&(cube[20].z==-1)){
+  if((cube[19].x==0)&&(cube[19].z==-1)){
+  if((cube[18].x==-1)&&(cube[18].z==-1)){
+      int[] temp = {2}; // U per risolvere
+      pll = temp;
+  }}}}}}}}
+  if((cube[0].x==1)&&(cube[0].z==1)){
+  if((cube[9].x==0)&&(cube[9].z==1)){
+  if((cube[18].x==-1)&&(cube[18].z==1)){
+  if((cube[1].x==1)&&(cube[1].z==0)){
+  if((cube[19].x==-1)&&(cube[19].z==0)){  //2U
+  if((cube[2].x==1)&&(cube[2].z==-1)){
+  if((cube[11].x==0)&&(cube[11].z==-1)){
+  if((cube[20].x==-1)&&(cube[20].z==-1)){
+      int[] temp = {2, 2}; // 2U per risolvere
+      pll = temp;
+  }}}}}}}}
+  if((cube[18].x==1)&&(cube[18].z==1)){
+  if((cube[19].x==0)&&(cube[19].z==1)){
+  if((cube[20].x==-1)&&(cube[20].z==1)){
+  if((cube[9].x==1)&&(cube[9].z==0)){
+  if((cube[11].x==-1)&&(cube[11].z==0)){  //U'
+  if((cube[0].x==1)&&(cube[0].z==-1)){
+  if((cube[1].x==0)&&(cube[1].z==-1)){
+  if((cube[2].x==-1)&&(cube[2].z==-1)){
+      int[] temp = {3}; // U' per risolvere
+      pll = temp;
+  }}}}}}}}
+  
+  return pll;
+}
+//-----------------------------------------------------------
 
 
 }
