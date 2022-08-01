@@ -14,7 +14,7 @@ But to be able to run it without the entire robot it's neccessary to have:
 - a connection to an arduino via a Serial comunication
 - if neccessary to correct the Serial port number in the processing IDE
 - correct the Arduino specification and port in Arduino IDE
-- upload the code in folder ArduinoDef2 to it
+- upload the code in folder sketchIno1 to it
 - run it and it should work
 
 
