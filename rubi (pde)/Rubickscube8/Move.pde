@@ -17,11 +17,11 @@ class Move { //varius variables
     this.type = type;
   }
   
-/*  Move copy() {
+/*  Move copy() { //copy move
     return new Move(x, y, z, dir, type); 
   }  */
   
-/*  void reverse() {
+/*  void reverse() { //make reversed move
     dir *= -1; 
   }  */
   
