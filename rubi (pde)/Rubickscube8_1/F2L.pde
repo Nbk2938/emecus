@@ -1,6 +1,6 @@
-class F2L {
+class F2L { //creates partial solution. completes the two slices of the cube
 
-  void startAngoloRV1(){
+  void startAngoloRV1(){ //the white corner is placed above were it schould be 
   int[] temp = spostaAngoloRossoVerde();
   if(temp != null){
     concatenateSolution(temp);
@@ -14,7 +14,7 @@ class F2L {
      //println("AngoloRV giusto");
    } 
  }
- void startAngoloRV2(){
+ void startAngoloRV2(){ //the white corner is pared with the middle piece acording to it^s other two colors and placed in the rigth spot next to the cross
   int[] temp = inserisciAngoloRossoVerde();
   if(temp != null){
     concatenateSolution(temp);
@@ -31,7 +31,7 @@ class F2L {
  
  //-----------------------------------------------------------------------------------
  
- void startAngoloBR1(){
+ void startAngoloBR1(){ //the white corner is placed above were it schould be
   int[] temp = spostaAngoloBluRosso();
   if(temp != null){
     concatenateSolution(temp);
@@ -45,7 +45,7 @@ class F2L {
     //println("AngoloBR giusto");
    } 
  }
- void startAngoloBR2(){
+ void startAngoloBR2(){//the white corner is pared with the middle piece acording to it^s other two colors and placed in the rigth spot next to the cross
   int[] temp = inserisciAngoloBluRosso();
   if(temp != null){
     concatenateSolution(temp);
@@ -62,7 +62,7 @@ class F2L {
  
  //-----------------------------------------------------------------------------------
  
- void startAngoloAB1(){
+ void startAngoloAB1(){ //the white corner is placed above were it schould be
   int[] temp = spostaAngoloArancioneBlu();
   if(temp != null){
     concatenateSolution(temp);
@@ -76,7 +76,7 @@ class F2L {
      //println("AngoloAB giusto");
    } 
  }
- void startAngoloAB2(){
+ void startAngoloAB2(){ //the white corner is pared with the middle piece acording to it^s other two colors and placed in the rigth spot next to the cross
   int[] temp = inserisciAngoloArancioneBlu();
   if(temp != null){
     concatenateSolution(temp);
@@ -93,7 +93,7 @@ class F2L {
  
  //---------------------------------------------------------------------------------
  
- void startAngoloVA1(){
+ void startAngoloVA1(){ //the white corner is placed above were it schould be
   int[] temp = spostaAngoloVerdeArancione();
   if(temp != null){
     concatenateSolution(temp);
@@ -107,7 +107,7 @@ class F2L {
      //println("AngoloVA giusto");
    } 
  }
- void startAngoloVA2(){
+ void startAngoloVA2(){ //the white corner is pared with the middle piece acording to it^s other two colors and placed in the rigth spot next to the cross
   int[] temp = inserisciAngoloVerdeArancione();
   if(temp != null){
     concatenateSolution(temp);
@@ -124,7 +124,7 @@ class F2L {
 
 //------------------------------------------------------------------------------------  
   
- int[] spostaAngoloRossoVerde() {
+ int[] spostaAngoloRossoVerde() {// there are 8 possible position were the specific corner can be. the orientations is now irrelevant
    int[] spostaRV = null;
      if(cube[26].y == 1){
        if((cube[26].z == 1)&&(cube[26].x == 1)){int[] temp ={4, 2, 5, 3};
@@ -137,7 +137,7 @@ class F2L {
          spostaRV = temp; }
      }
      if(cube[26].y == -1){
-       //if((cube[26].z == 1)&&(cube[26].x == 1)){int[] temp ={100};
+       //if((cube[26].z == 1)&&(cube[26].x == 1)){int[] temp ={100}; // already in the right spot
          //spostaRV = temp; }
        if((cube[26].z == 1)&&(cube[26].x == -1)){int[] temp ={3};
          spostaRV = temp; }
@@ -151,7 +151,7 @@ class F2L {
 
 //-------------------------------------------------------------------------------
 
- int[] spostaAngoloBluRosso() { 
+ int[] spostaAngoloBluRosso() { // there are 8 possible position were the specific corner can be. the orientations is now irrelevant
    int[] spostaBR = null;
      if(cube[8].y == 1){
        if((cube[8].z == 1)&&(cube[8].x == 1)){int[] temp ={4, 2, 5};
@@ -166,7 +166,7 @@ class F2L {
      if(cube[8].y == -1){
        if((cube[8].z == 1)&&(cube[8].x == 1)){int[] temp ={2};
          spostaBR = temp; }
-       //if((cube[8].z == 1)&&(cube[8].x == -1)){int[] temp ={100};
+       //if((cube[8].z == 1)&&(cube[8].x == -1)){int[] temp ={100}; // already in the right spot
          //spostaBR = temp; }
        if((cube[8].z == -1)&&(cube[8].x == 1)){int[] temp ={2, 2};
          spostaBR = temp; }
@@ -178,7 +178,7 @@ class F2L {
  
  //--------------------------------------------------------------------
  
- int[] spostaAngoloArancioneBlu() {
+ int[] spostaAngoloArancioneBlu() { // there are 8 possible position were the specific corner can be. the orientations is now irrelevant
    int[] spostaAB = null;
      if(cube[6].y == 1){
        if((cube[6].z == 1)&&(cube[6].x == 1)){int[] temp ={4, 2, 2, 5};
@@ -197,7 +197,7 @@ class F2L {
          spostaAB = temp; }
        if((cube[6].z == -1)&&(cube[6].x == 1)){int[] temp ={3};
          spostaAB = temp; }
-       //if((cube[6].z == -1)&&(cube[6].x == -1)){int[] temp ={100};
+       //if((cube[6].z == -1)&&(cube[6].x == -1)){int[] temp ={100}; // already in the right spot
          //spostaAB = temp; }
      }
    return spostaAB;
@@ -205,7 +205,7 @@ class F2L {
  
  //-------------------------------------------------------------------
  
- int[] spostaAngoloVerdeArancione() {
+ int[] spostaAngoloVerdeArancione() { // there are 8 possible position were the specific corner can be. the orientations is now irrelevant
    int[] spostaVA = null;
      if(cube[24].y == 1){
        if((cube[24].z == 1)&&(cube[24].x == 1)){int[] temp ={9, 3, 8};
@@ -222,7 +222,7 @@ class F2L {
          spostaVA = temp; }
        if((cube[24].z == 1)&&(cube[24].x == -1)){int[] temp ={2, 2};
          spostaVA = temp; }
-       //if((cube[24].z == -1)&&(cube[24].x == 1)){int[] temp ={100};
+       //if((cube[24].z == -1)&&(cube[24].x == 1)){int[] temp ={100}; // already in the right spot
          //spostaVA = temp; }
        if((cube[24].z == -1)&&(cube[24].x == -1)){int[] temp ={2};
          spostaVA = temp; }
@@ -232,35 +232,35 @@ class F2L {
  
  //--------------------------------------------------------------------------------------------------
  
- int[] inserisciAngoloRossoVerde(){
+ int[] inserisciAngoloRossoVerde(){ //48 different permutations to check
    int[] inserisciRV = null;
    
-     if(cube[26].faces[2].normal.z ==1){    //se la faccia bianca del angolo é orientata verso z = 1  
-       if(cube[23].faces[1].normal.y == -1){    //se la faccia rossa del altro cubo é orientata verso l'alto
-         if(cube[23].x==1){int[] temp = {2, 4, 3, 5};//1
+     if(cube[26].faces[2].normal.z ==1){    //the white face of the cubie is oriented in z = 1  
+       if(cube[23].faces[1].normal.y == -1){    //the red face of the other cubie is upward oriented. 4 possible positions
+         if(cube[23].x==1){int[] temp = {2, 4, 3, 5};
            inserisciRV = temp; }
-         if(cube[23].z==-1){int[] temp = {3, 4, 2, 5, 2, 2, 4, 3, 5};//3
+         if(cube[23].z==-1){int[] temp = {3, 4, 2, 5, 2, 2, 4, 3, 5};
            inserisciRV = temp; }
-         if(cube[23].x==-1){int[] temp = {3, 4, 3, 3, 5, 2, 2, 4, 3, 5};//5
+         if(cube[23].x==-1){int[] temp = {3, 4, 3, 3, 5, 2, 2, 4, 3, 5};
            inserisciRV = temp; }
-         if(cube[23].z==1){int[] temp = {9, 2, 8, 2, 2, 4, 2, 5};//7
-           inserisciRV = temp; }
-       }
-       if(cube[23].faces[4].normal.y == -1){   //se la faccia verde del altro cubo é orientata verso l'alto
-         if(cube[23].x==-1){int[] temp = {9, 3, 8};//9
-           inserisciRV = temp; }
-         if(cube[23].z==-1){int[] temp = {3, 4, 3, 5, 2, 9, 3, 8};//11
-           inserisciRV = temp; }
-         if(cube[23].x==1){int[] temp = {3, 4, 3, 3, 5, 2, 9, 3, 8};//13
-           inserisciRV = temp; }
-         if(cube[23].z==1){int[] temp = {2, 9, 2, 8, 3, 9, 3, 8};//15
+         if(cube[23].z==1){int[] temp = {9, 2, 8, 2, 2, 4, 2, 5};
            inserisciRV = temp; }
        }
-       if(cube[23].y==0){
+       if(cube[23].faces[4].normal.y == -1){   //the green face of the other cubie is upward oriented. 4 possible positions
+         if(cube[23].x==-1){int[] temp = {9, 3, 8};
+           inserisciRV = temp; }
+         if(cube[23].z==-1){int[] temp = {3, 4, 3, 5, 2, 9, 3, 8};
+           inserisciRV = temp; }
+         if(cube[23].x==1){int[] temp = {3, 4, 3, 3, 5, 2, 9, 3, 8};
+           inserisciRV = temp; }
+         if(cube[23].z==1){int[] temp = {2, 9, 2, 8, 3, 9, 3, 8};
+           inserisciRV = temp; }
+       }
+       if(cube[23].y==0){                     //the other cubie is in the middle slice. 8 possible permutations
          if(cube[23].faces[1].normal.z == 1){
-           if(cube[23].x==1){int[] temp = {3, 4, 3, 5, 2, 2, 4, 3, 5};//31
+           if(cube[23].x==1){int[] temp = {3, 4, 3, 5, 2, 2, 4, 3, 5};
              inserisciRV = temp; }
-           if(cube[23].x==-1){int[] temp = {3, 8, 3, 9, 2, 2, 9, 3, 8};//U'FU'F'UUF'U'F
+           if(cube[23].x==-1){int[] temp = {3, 8, 3, 9, 2, 2, 9, 3, 8};
              inserisciRV = temp; }
          }
          if(cube[23].faces[1].normal.z == -1){
@@ -270,7 +270,7 @@ class F2L {
              inserisciRV = temp; }
          }
          if(cube[23].faces[1].normal.x == 1){
-           if(cube[23].z==1){int[] temp = {3, 4, 2, 5, 2, 9, 3, 8};//33
+           if(cube[23].z==1){int[] temp = {3, 4, 2, 5, 2, 9, 3, 8};
              inserisciRV = temp; }
            if(cube[23].z==-1){int[] temp = {2, 2, 5, 3, 4, 3, 9, 3, 8};//UUR'U'RU'F'U'F
              inserisciRV = temp; }
@@ -284,31 +284,31 @@ class F2L {
        }
      }
      
-     if(cube[26].faces[2].normal.x ==1){   //se la faccia  bianca del angolo é orientata verso x = 1
-       if(cube[23].faces[4].normal.y == -1){ //se la faccia verde del altro cubo é orientata verso l'alto
-         if(cube[23].z==1){int[] temp = {8, 5, 9, 4};//2
+     if(cube[26].faces[2].normal.x ==1){      //the white face of the cubie is oriented in x = 1  
+       if(cube[23].faces[4].normal.y == -1){     //the green face of the other cubie is upward oriented. 4 possible positions
+         if(cube[23].z==1){int[] temp = {8, 5, 9, 4};
            inserisciRV = temp; }
-         if(cube[23].x==-1){int[] temp = {2, 9, 3, 8, 2, 2, 9, 2, 8};//4
+         if(cube[23].x==-1){int[] temp = {2, 9, 3, 8, 2, 2, 9, 2, 8};
            inserisciRV = temp; }
-         if(cube[23].z==-1){int[] temp = {2, 9, 2, 2, 8, 3, 3, 9, 2, 8};//6
+         if(cube[23].z==-1){int[] temp = {2, 9, 2, 2, 8, 3, 3, 9, 2, 8};
            inserisciRV = temp; }
-         if(cube[23].x==1){int[] temp = {4, 3, 5, 2, 2, 9, 3, 8};//8
+         if(cube[23].x==1){int[] temp = {4, 3, 5, 2, 2, 9, 3, 8};
            inserisciRV = temp; }
       }
-      if(cube[23].faces[1].normal.y == -1){  //se la faccia rossa del altro cubo é orientata verso l'alto
-        if(cube[23].z==-1){int[] temp = {4, 2, 5};//10
+      if(cube[23].faces[1].normal.y == -1){  //the red face of the other cubie is upward oriented. 4 possible positions
+        if(cube[23].z==-1){int[] temp = {4, 2, 5};
            inserisciRV = temp; }
-        if(cube[23].x==-1){int[] temp = {3, 4, 2, 5, 2, 4, 2, 5};//12
+        if(cube[23].x==-1){int[] temp = {3, 4, 2, 5, 2, 4, 2, 5};
            inserisciRV = temp; }
-        if(cube[23].z==1){int[] temp = {5, 2, 2, 4, 4, 2, 5, 5, 2, 4};//14
+        if(cube[23].z==1){int[] temp = {5, 2, 2, 4, 4, 2, 5, 5, 2, 4};
            inserisciRV = temp; }
-        if(cube[23].x==1){int[] temp = {3, 4, 3, 5, 2, 4, 2, 5};//16
+        if(cube[23].x==1){int[] temp = {3, 4, 3, 5, 2, 4, 2, 5};
            inserisciRV = temp; }
         
       }
-      if(cube[23].y==0){
+      if(cube[23].y==0){                      //the other cubie is in the middle slice. 8 possible permutations
         if(cube[23].faces[1].normal.z == 1){
-           if(cube[23].x==1){int[] temp = {2, 4, 2, 5, 2, 2, 4, 2, 5};//32
+           if(cube[23].x==1){int[] temp = {2, 4, 2, 5, 2, 2, 4, 2, 5};
              inserisciRV = temp; }
            if(cube[23].x==-1){int[] temp = {3, 6, 2, 7, 4, 2, 5};//U'L'ULRUR'
              inserisciRV = temp; }
@@ -320,7 +320,7 @@ class F2L {
              inserisciRV = temp; } 
         }
         if(cube[23].faces[1].normal.x == 1){
-           if(cube[23].z==1){int[] temp = {2, 9, 3, 8, 3, 4, 2, 5};//34
+           if(cube[23].z==1){int[] temp = {2, 9, 3, 8, 3, 4, 2, 5};
              inserisciRV = temp; }
            if(cube[23].z==-1){int[] temp = {11, 2, 10, 3, 4, 2, 5};//BUB'U'RUR'
              inserisciRV = temp; }
@@ -334,30 +334,30 @@ class F2L {
       }
     }
     
-    if(cube[26].faces[2].normal.y ==-1){ //se la faccia bianca del angolo é orientato verso l'alto
-      if(cube[23].faces[1].normal.y == -1){ //se la faccia rossa del altro cubo é orientato verso l'alto
-        if(cube[23].x==1){int[] temp = {4, 3, 3, 5, 3, 4, 2, 5};//17
+    if(cube[26].faces[2].normal.y ==-1){        //the white face of the cubie is upward oriented  
+      if(cube[23].faces[1].normal.y == -1){        ///the red face of the other cubie is upward oriented. 4 possible positions
+        if(cube[23].x==1){int[] temp = {4, 3, 3, 5, 3, 4, 2, 5};
           inserisciRV = temp; }
-        if(cube[23].z==-1){int[] temp = {2, 4, 2, 2, 5, 2, 4, 3, 5};//19
+        if(cube[23].z==-1){int[] temp = {2, 4, 2, 2, 5, 2, 4, 3, 5};
           inserisciRV = temp; }
-        if(cube[23].x==-1){int[] temp = {4, 3, 5, 3, 3, 4, 2, 5};//21
+        if(cube[23].x==-1){int[] temp = {4, 3, 5, 3, 3, 4, 2, 5};
           inserisciRV = temp; }
-        if(cube[23].z==1){int[] temp = {2, 2, 4, 4, 2, 2, 5, 3, 4, 3, 4, 4};//23
-          inserisciRV = temp; }
-      }
-      if(cube[23].faces[4].normal.y == -1){  //se la faccia verde del altro cubo é orientata verso l'alto
-        if(cube[23].z==1){int[] temp = {4, 2, 2, 5, 9, 3, 8, 3, 3, 9, 2, 8}; //18
-          inserisciRV = temp; }
-        if(cube[23].x==-1){int[] temp = {4, 3, 5, 3, 9, 2, 2, 8, 3, 3, 9, 2, 8}; //20
-          inserisciRV = temp; }
-        if(cube[23].z==-1){int[] temp = {9, 2, 8, 2, 2, 9, 3, 8};//22
-          inserisciRV = temp; }
-        if(cube[23].x==1){int[] temp = {4, 2, 5, 2, 9, 2, 8, 3, 9, 2, 8};//24
+        if(cube[23].z==1){int[] temp = {2, 2, 4, 4, 2, 2, 5, 3, 4, 3, 4, 4};
           inserisciRV = temp; }
       }
-      if(cube[23].y==0){
+      if(cube[23].faces[4].normal.y == -1){  //the green face of the other cubie is upward oriented. 4 possible positions
+        if(cube[23].z==1){int[] temp = {4, 2, 2, 5, 9, 3, 8, 3, 3, 9, 2, 8}; 
+          inserisciRV = temp; }
+        if(cube[23].x==-1){int[] temp = {4, 3, 5, 3, 9, 2, 2, 8, 3, 3, 9, 2, 8};
+          inserisciRV = temp; }
+        if(cube[23].z==-1){int[] temp = {9, 2, 8, 2, 2, 9, 3, 8};
+          inserisciRV = temp; }
+        if(cube[23].x==1){int[] temp = {4, 2, 5, 2, 9, 2, 8, 3, 9, 2, 8};
+          inserisciRV = temp; }
+      }
+      if(cube[23].y==0){                      //the other cubie is in the middle slice. 8 possible permutations
         if(cube[23].faces[1].normal.z == 1){
-          if(cube[23].x==1){int[] temp = {4, 2, 5, 3, 4, 2, 5, 3, 4, 2, 5};//36
+          if(cube[23].x==1){int[] temp = {4, 2, 5, 3, 4, 2, 5, 3, 4, 2, 5};
              inserisciRV = temp; }
            if(cube[23].x==-1){int[] temp = {2, 8, 3, 9, 9, 2, 8};//UFU'F'F'UF
              inserisciRV = temp; } 
@@ -369,7 +369,7 @@ class F2L {
              inserisciRV = temp; } 
         }
         if(cube[23].faces[1].normal.x == 1){
-           if(cube[23].z==1){int[] temp = {4, 3, 5, 2, 9, 2, 8};//35
+           if(cube[23].z==1){int[] temp = {4, 3, 5, 2, 9, 2, 8};
              inserisciRV = temp; }
            if(cube[23].z==-1){int[] temp = {11, 2, 10, 4, 3, 3, 5, 2, 4, 3, 5};//BUB'RU'U'R'URU'R'
              inserisciRV = temp; }
@@ -388,11 +388,11 @@ class F2L {
  
  //------------------------------------------------------------------------------------------------------------
  
- int[] inserisciAngoloBluRosso(){
+ int[] inserisciAngoloBluRosso(){ //48 different permutations to check
    int[] inserisciBR = null;
      
-     if(cube[8].faces[2].normal.x==-1){ // faccia bianca del angolo orientata verso x==-1
-       if(cube[5].faces[5].normal.y==-1){ //faccia blu del altro cubo  orientata verso l'alto
+     if(cube[8].faces[2].normal.x==-1){ //the white face of the cubie is oriented in x = -1
+       if(cube[5].faces[5].normal.y==-1){ //the blue face of the other cubie is upward oriented. 4 possible positions
          if(cube[5].z==1){int[] temp = {2, 8, 3, 9};
            inserisciBR = temp; }
          if(cube[5].x==1){int[] temp = {3, 8, 2, 9, 2, 2, 8, 3, 9};
@@ -402,7 +402,7 @@ class F2L {
          if(cube[5].x==-1){int[] temp = {6, 2, 7, 2, 2, 8, 2, 9};
            inserisciBR = temp; }
        }
-       if(cube[5].faces[1].normal.y==-1){ //faccia rossa del altro cubo  orientata verso l'alto
+       if(cube[5].faces[1].normal.y==-1){ //the red face of the other cubie is upward oriented. 4 possible positions
          if(cube[5].z==-1){int[] temp = {6, 3, 7};
            inserisciBR = temp; }
          if(cube[5].x==1){int[] temp = {3, 8, 3, 9, 2, 6, 3, 7};
@@ -412,7 +412,7 @@ class F2L {
          if(cube[5].x==-1){int[] temp = {2, 6, 2, 7, 3, 6, 3, 7};
            inserisciBR = temp; }
        }
-       if(cube[5].y==0){
+       if(cube[5].y==0){                    //the other cubie is in the middle slice. 8 possible permutations
          if(cube[5].faces[5].normal.x==-1){
            if(cube[5].z==1){int[] temp = {3, 8, 3, 9, 2, 2, 8, 3, 9};
              inserisciBR = temp; }
@@ -440,8 +440,8 @@ class F2L {
        }
      }
      
-     if(cube[8].faces[2].normal.z==1){ // faccia bianca del angolo orientata verso x==-1
-       if(cube[5].faces[1].normal.y==-1){ //faccia rossa del altro cubo  orientata verso l'alto
+     if(cube[8].faces[2].normal.z==1){ //the white face of the cubie is oriented in z = 1
+       if(cube[5].faces[1].normal.y==-1){ //the red face of the other cubie is upward oriented. 4 possible positions
          if(cube[5].x==-1){int[] temp = {7, 9, 6, 8};
            inserisciBR = temp; }
          if(cube[5].z==-1){int[] temp = {2, 6, 3, 7, 2, 2, 6, 2, 7};
@@ -451,7 +451,7 @@ class F2L {
          if(cube[5].z==1){int[] temp = {8, 3, 9, 2, 2, 6, 3, 7};
            inserisciBR = temp; }
        }
-       if(cube[5].faces[5].normal.y==-1){ //faccia blu del altro cubo  orientata verso l'alto
+       if(cube[5].faces[5].normal.y==-1){ //the blue face of the other cubie is upward oriented. 4 possible positions
          if(cube[5].x==1){int[] temp = {8, 2, 9};
            inserisciBR = temp; }
          if(cube[5].z==-1){int[] temp = {3, 8, 2, 9, 2, 8, 2, 9};
@@ -460,8 +460,8 @@ class F2L {
            inserisciBR = temp; }
          if(cube[5].z==1){int[] temp = {3, 8, 3, 9, 2, 8, 2, 9};
            inserisciBR = temp; }
-       }
-       if(cube[5].y==0){
+       } 
+       if(cube[5].y==0){                      //the other cubie is in the middle slice. 8 possible permutations
          if(cube[5].faces[5].normal.x==-1){
            if(cube[5].z==1){int[] temp = {2, 8, 2, 9, 2, 2, 8, 2, 9};
              inserisciBR = temp; }
@@ -489,8 +489,8 @@ class F2L {
        }
      }
      
-     if(cube[8].faces[2].normal.y==-1){ // faccia bianca del angolo orientata verso l'alto
-       if(cube[5].faces[5].normal.y==-1){ //faccia blu del altro cubo  orientata verso l'alto
+     if(cube[8].faces[2].normal.y==-1){ //the white face of the cubie is upward oriented
+       if(cube[5].faces[5].normal.y==-1){ //the blue face of the other cubie is upward oriented. 4 possible positions
          if(cube[5].z==1){int[] temp = {8, 3, 3, 9, 3, 8, 2, 9};
            inserisciBR = temp; }
          if(cube[5].x==1){int[] temp = {2, 8, 2, 2, 9, 2, 8, 3, 9};
@@ -500,7 +500,7 @@ class F2L {
          if(cube[5].x==-1){int[] temp = {2, 2, 8, 8, 2, 2, 9, 3, 8, 3, 8, 8};
            inserisciBR = temp; }
        }
-       if(cube[5].faces[1].normal.y==-1){ //faccia rossa del altro cubo  orientata verso l'alto
+       if(cube[5].faces[1].normal.y==-1){ //the red face of the other cubie is upward oriented. 4 possible positions
          if(cube[5].x==-1){int[] temp = {8, 2, 2, 9, 6, 3, 7, 3, 3, 6, 2, 7};
            inserisciBR = temp; }
          if(cube[5].z==-1){int[] temp = {8, 3, 9, 3, 6, 2, 2, 7, 3, 3, 6, 2, 7};
@@ -510,7 +510,7 @@ class F2L {
          if(cube[5].z==1){int[] temp = {8, 2, 9, 2, 6, 2, 7, 3, 6, 2, 7};
            inserisciBR = temp; }
        }
-       if(cube[5].y==0){
+       if(cube[5].y==0){                     //the other cubie is in the middle slice. 8 possible permutations
          if(cube[5].faces[5].normal.x==-1){
            if(cube[5].z==1){int[] temp = {8, 2, 9, 3, 8, 2, 9, 3, 8, 2, 9};
              inserisciBR = temp; }
@@ -542,11 +542,11 @@ class F2L {
  
  //--------------------------------------------------------------------------------------------------
  
- int[] inserisciAngoloArancioneBlu(){
+ int[] inserisciAngoloArancioneBlu(){ //48 different permutations to check
    int[] inserisciAB = null;
    
-     if(cube[6].faces[2].normal.z==-1){ //faccia nera orientata verso z=-1
-       if(cube[3].faces[0].normal.y==-1){ //faccia arancione veso l'alto
+     if(cube[6].faces[2].normal.z==-1){ //the white face of the cubie is oriented in z = -1
+       if(cube[3].faces[0].normal.y==-1){ //the orange face of the other cubie is upward oriented. 4 possible positions
          if(cube[3].x==-1){int[] temp = {2, 7, 3, 6};
            inserisciAB = temp; }
          if(cube[3].z==1){int[] temp = {3, 7, 2, 6, 2, 2, 7, 3, 6};
@@ -556,7 +556,7 @@ class F2L {
          if(cube[3].z==-1){int[] temp = {10, 2, 11, 2, 2, 7, 2, 6};
            inserisciAB = temp; }
        }
-       if(cube[3].faces[5].normal.y==-1){ //faccia blu veso l'alto
+       if(cube[3].faces[5].normal.y==-1){ //the blue face of the other cubie is upward oriented. 4 possible positions
          if(cube[3].x==1){int[] temp = {10, 3, 11};
            inserisciAB = temp; }
          if(cube[3].z==1){int[] temp = {3, 7, 3, 6, 2, 10, 3, 11};
@@ -566,7 +566,7 @@ class F2L {
          if(cube[3].z==-1){int[] temp = {2, 10, 2, 11, 3, 10, 3, 11};
            inserisciAB = temp; }
        }
-       if(cube[3].y==0){
+       if(cube[3].y==0){                    //the other cubie is in the middle slice. 8 possible permutations
          if(cube[3].faces[0].normal.z==-1){
            if(cube[3].x==-1){int[] temp = {3, 7, 3, 6, 2, 2, 7, 3, 6};
              inserisciAB = temp; }
@@ -594,8 +594,8 @@ class F2L {
        }
      }
      
-     if(cube[6].faces[2].normal.x==-1){ //faccia nera orientata verso x=-1
-       if(cube[3].faces[5].normal.y==-1){ //faccia blu veso l'alto
+     if(cube[6].faces[2].normal.x==-1){ //the white face of the cubie is oriented in x = -1
+       if(cube[3].faces[5].normal.y==-1){ //the blue face of the other cubie is upward oriented. 4 possible positions
          if(cube[3].z==-1){int[] temp = {11, 6, 10, 7};
            inserisciAB = temp; }
          if(cube[3].x==1){int[] temp = {2, 10, 3, 11, 2, 2, 10, 2, 11};
@@ -605,7 +605,7 @@ class F2L {
          if(cube[3].x==-1){int[] temp = {7, 3, 6, 2, 2, 10, 3, 11};
            inserisciAB = temp; }
        }
-       if(cube[3].faces[0].normal.y==-1){ //faccia arancione veso l'alto
+       if(cube[3].faces[0].normal.y==-1){ //the orange face of the other cubie is upward oriented. 4 possible positions
          if(cube[3].z==1){int[] temp = {7, 2, 6};
            inserisciAB = temp; }
          if(cube[3].x==1){int[] temp = {3, 7, 2, 6, 2, 7, 2, 6};
@@ -615,7 +615,7 @@ class F2L {
          if(cube[3].x==-1){int[] temp = {3, 7, 3, 6, 2, 7, 2, 6};
            inserisciAB = temp; }
        }
-       if(cube[3].y==0){
+       if(cube[3].y==0){                     //the other cubie is in the middle slice. 8 possible permutations
          if(cube[3].faces[0].normal.z==-1){
            if(cube[3].x==-1){int[] temp = {2, 7, 2, 6, 2, 2, 7, 2, 6};
              inserisciAB = temp; }
@@ -643,8 +643,8 @@ class F2L {
        }
      }
      
-     if(cube[6].faces[2].normal.y==-1){ //faccia nera orientata verso l'alto
-       if(cube[3].faces[0].normal.y==-1){ //faccia arancione veso l'alto
+     if(cube[6].faces[2].normal.y==-1){ //the white face of the cubie is upward oriented
+       if(cube[3].faces[0].normal.y==-1){ //the orange face of the other cubie is upward oriented. 4 possible positions
          if(cube[3].x==-1){int[] temp = {7, 3, 3, 6, 3, 7, 2, 6};
            inserisciAB = temp; }
          if(cube[3].z==1){int[] temp = {2, 7, 2, 2, 6, 2, 7, 3, 6};
@@ -654,7 +654,7 @@ class F2L {
          if(cube[3].z==-1){int[] temp = {2, 2, 7, 7, 2, 2, 6, 3, 7, 3, 7, 7};
            inserisciAB = temp; }
        }
-       if(cube[3].faces[5].normal.y==-1){ //faccia blu veso l'alto
+       if(cube[3].faces[5].normal.y==-1){ //the blue face of the other cubie is upward oriented. 4 possible positions
          if(cube[3].z==-1){int[] temp = {7, 2, 2, 6, 10, 3, 11, 3, 3, 10, 2, 11};
            inserisciAB = temp; }
          if(cube[3].x==1){int[] temp = {7, 3, 6, 3, 10, 2, 2, 11, 3, 3, 10, 2, 11};
@@ -664,7 +664,7 @@ class F2L {
          if(cube[3].x==-1){int[] temp = {7, 2, 6, 2, 10, 2, 11, 3, 10, 2, 11};
            inserisciAB = temp; }
        }
-       if(cube[3].y==0){
+       if(cube[3].y==0){                     //the other cubie is in the middle slice. 8 possible permutations
          if(cube[3].faces[0].normal.z==-1){
            if(cube[3].x==-1){int[] temp = {7, 2, 6, 3, 7, 2, 6, 3, 7, 2, 6};
              inserisciAB = temp; }
@@ -696,11 +696,11 @@ class F2L {
  
  //--------------------------------------------------------------------
  
- int[] inserisciAngoloVerdeArancione(){
+ int[] inserisciAngoloVerdeArancione(){ //48 different permutations to check
    int[] inserisciVA = null;
    
-     if(cube[24].faces[2].normal.x==1){//faccia nera orientata verso x=1
-       if(cube[21].faces[4].normal.y==-1){//faccia verde verso l'alto
+     if(cube[24].faces[2].normal.x==1){//the white face of the cubie is oriented in x = 1
+       if(cube[21].faces[4].normal.y==-1){//the green face of the other cubie is upward oriented. 4 possible positions
          if(cube[21].z==-1){int[] temp = {2, 11, 3, 10};
            inserisciVA = temp; }
          if(cube[21].x==-1){int[] temp = {3, 11, 2, 10, 2, 2, 11, 3, 10};
@@ -710,7 +710,7 @@ class F2L {
          if(cube[21].x==1){int[] temp = {5, 2, 4, 2, 2, 11, 2, 10};
            inserisciVA = temp; }
        }  
-       if(cube[21].faces[0].normal.y==-1){//faccia arancione verso l'alto
+       if(cube[21].faces[0].normal.y==-1){//the orange face of the other cubie is upward oriented. 4 possible positions
          if(cube[21].z==1){int[] temp = {5, 3, 4};
            inserisciVA = temp; }
          if(cube[21].x==-1){int[] temp = {3, 11, 3, 10, 2, 5, 3, 4};
@@ -720,7 +720,7 @@ class F2L {
          if(cube[21].x==1){int[] temp = {2, 5, 2, 4, 3, 5, 3, 4};
            inserisciVA = temp; }
        }
-       if(cube[21].y==0){
+       if(cube[21].y==0){                   //the other cubie is in the middle slice. 8 possible permutations
          if(cube[21].faces[4].normal.x==1){
            if(cube[21].z==-1){int[] temp = {3, 11, 3, 10, 2, 2, 11, 3, 10};
              inserisciVA = temp; }
@@ -748,8 +748,8 @@ class F2L {
        }
      }
      
-     if(cube[24].faces[2].normal.z==-1){//faccia nera orientata verso z=-1
-       if(cube[21].faces[0].normal.y==-1){//faccia arancione verso l'alto
+     if(cube[24].faces[2].normal.z==-1){//the white face of the cubie is oriented in z = -1
+       if(cube[21].faces[0].normal.y==-1){//the orange face of the other cubie is upward oriented. 4 possible positions
          if(cube[21].x==1){int[] temp = {4, 10, 5, 11};
            inserisciVA = temp; }
          if(cube[21].z==1){int[] temp = {2, 5, 3, 4, 2, 2, 5, 2, 4};
@@ -759,7 +759,7 @@ class F2L {
          if(cube[21].z==-1){int[] temp = {11, 3, 10, 2, 2, 5, 3, 4};
            inserisciVA = temp; }
        }
-       if(cube[21].faces[4].normal.y==-1){//faccia verde verso l'alto
+       if(cube[21].faces[4].normal.y==-1){//the green face of the other cubie is upward oriented. 4 possible positions
          if(cube[21].x==-1){int[] temp = {11, 2, 10};
            inserisciVA = temp; }
          if(cube[21].z==1){int[] temp = {3, 11, 2, 10, 2, 11, 2, 10};
@@ -769,7 +769,7 @@ class F2L {
          if(cube[21].z==-1){int[] temp = {3, 11, 3, 10, 2, 11, 2, 10};
            inserisciVA = temp; }
        }
-       if(cube[21].y==0){
+       if(cube[21].y==0){                    //the other cubie is in the middle slice. 8 possible permutations
          if(cube[21].faces[4].normal.x==1){
            if(cube[21].z==-1){int[] temp = {2, 11, 2, 10, 2, 2, 11, 2, 10};
              inserisciVA = temp; }
@@ -797,8 +797,8 @@ class F2L {
        }
      }
      
-     if(cube[24].faces[2].normal.y==-1){//faccia nera orientata verso l'alto
-       if(cube[21].faces[4].normal.y==-1){//faccia verde verso l'alto
+     if(cube[24].faces[2].normal.y==-1){//the white face of the cubie is upward oriented
+       if(cube[21].faces[4].normal.y==-1){//the green face of the other cubie is upward oriented. 4 possible positions
          if(cube[21].z==-1){int[] temp = {11, 3, 3, 10, 3, 11, 2, 10};
            inserisciVA = temp; }
          if(cube[21].x==-1){int[] temp = {2, 11, 2, 2, 10, 2, 11, 3, 10};
@@ -808,7 +808,7 @@ class F2L {
          if(cube[21].x==1){int[] temp = {2, 2, 11, 11, 2, 2, 10, 3, 11, 3, 11, 11};
            inserisciVA = temp; }
        }
-       if(cube[21].faces[0].normal.y==-1){//faccia arancione verso l'alto
+       if(cube[21].faces[0].normal.y==-1){//the orange face of the other cubie is upward oriented. 4 possible positions
          if(cube[21].x==1){int[] temp = {11, 2, 2, 10, 5, 3, 4, 3, 3, 5, 2, 4};
            inserisciVA = temp; }
          if(cube[21].z==1){int[] temp = {11, 3, 10, 3, 5, 2, 2, 4, 3, 3, 5, 2, 4};
@@ -817,8 +817,8 @@ class F2L {
            inserisciVA = temp; }
          if(cube[21].z==-1){int[] temp = {11, 2, 10, 2, 5, 2, 4, 3, 5, 2, 4};
            inserisciVA = temp; }
-       }
-       if(cube[21].y==0){
+       } 
+       if(cube[21].y==0){                    //the other cubie is in the middle slice. 8 possible permutations
          if(cube[21].faces[4].normal.x==1){
            if(cube[21].z==-1){int[] temp = {11, 2, 10, 3, 11, 2, 10, 3, 11, 2, 10};
              inserisciVA = temp; }
