@@ -1,5 +1,5 @@
 
-class Move {
+class Move { //varius variables
   float angle = 0;
   int x = 0;
   int y = 0;
@@ -9,7 +9,7 @@ class Move {
   boolean animating = false;
   boolean finished = false;
   
-  Move(int x, int y, int z, int dir, String type) {
+  Move(int x, int y, int z, int dir, String type) { //Move constructor
     this.x = x;
     this.y = y;
     this.z = z;
@@ -41,7 +41,7 @@ class Move {
   
   
   
-  void complete(){
+  void complete(){ //complete the move by checking wich cubies are effectet and turning them 90° in the specified direction
     if(abs(x) == 1) turnX(x,dir) ;
     if(x == 2) turnX(0,dir);
         
@@ -53,13 +53,13 @@ class Move {
   }
   
   void update() {
-    if(animating) {          //se é vero esegui codice sottostante
-      angle += dir * speed;   //calcolo del angolo di spostamneto 
-      if (abs(angle) > HALF_PI) { //se l'angolo é maggiore i 90°
-        angle = 0;                // riporta l'angolo a 0 
+    if(animating) {          
+      angle += dir * speed;   //  displacement angle
+      if (abs(angle) > HALF_PI) { //if more than 90° : null the angle 
+        angle = 0;                
         animating = false;       
         finished = true;
-                          //esegui i calcoli delle nuove posizioni
+                          //make new calculations of the positions of the cubies
         if(abs(x) == 1) turnX(x,dir) ;
         if(x == 2) turnX(0,dir);
         
