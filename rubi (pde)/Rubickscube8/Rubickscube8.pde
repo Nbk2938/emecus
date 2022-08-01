@@ -1,8 +1,7 @@
 
-import peasy.*;
-//import java.util.concurrent.locks.ReentrantLock;
-import lord_of_galaxy.timing_utils.* ;
-import processing.serial.*;
+import peasy.*; //external 3D object camera library
+import lord_of_galaxy.timing_utils.* ; //stopwhatch library
+import processing.serial.*; //usb serial port library
   
 PeasyCam cam;
 Serial port;
@@ -10,7 +9,7 @@ Stopwatch whatch;
  
 
 PFont fil; 
-float speed = 0.176;
+float speed = 0.33;
 int scrambled = 19;  //+1
 int typing = 0;
 int saved = 0;
@@ -21,10 +20,10 @@ byte [] sendScrambled;
 int recived;  // data send from arduino
 
 int dim = 3;
-cubie[] cube = new cubie[dim*dim*dim]; //l'array contiene tutti i 27 cubetti. Molto utile per identificare qualsiasi cubo individuale
+cubie[] cube = new cubie[dim*dim*dim]; //cubie array. in total 27 cubies
 
 
-Move[] allMoves = new Move[] {
+Move[] allMoves = new Move[] { //declare possible moves 
   new Move(0, 1, 0, 1, "D'"),   //D'
   new Move(0, 1, 0, -1, "D"),  //D
   new Move(0, -1, 0, 1, "U"),  //U
@@ -45,7 +44,7 @@ Move[] allMoves = new Move[] {
   new Move(0, 0, 2, 1, "S"), //S
   new Move(0, 0, 2, -1, "S'"), //S'
 };
-
+                                   //number corrispondatoin to Moves
   Move D = allMoves[0];  //D'=0
   Move d = allMoves[1];  //D =1
   Move u = allMoves[2];  //U =2 
@@ -66,20 +65,19 @@ Move[] allMoves = new Move[] {
   Move s = allMoves[16]; //S =16
   Move S = allMoves[17]; //S'=17   
 
-//ArrayList<Move> sequenceSolve = new ArrayList<Move>();
-ArrayList<Move> sequence = new ArrayList<Move>();
+ArrayList<Move> sequence = new ArrayList<Move>(); // declare a list of moves, used for animation
 int counter = 0;
 
 //boolean started = false;    
-boolean calculatingFinished = false; // when it's true start drowing the cube and animating
-boolean spacePressed = false;  // if it's true it bloks the space bar
-boolean keySPressed = false;   // if it's true it bloks the key 's'  
-boolean startSolution = false;  //if true you can press the key 's'
-boolean printlnSomeStuff = false; //just for show
-boolean printlnSomeOderStuff = false; //also for show
+boolean calculatingFinished = false;   // when it's true start drowing the cube and animating
+boolean spacePressed = false;          //if it's true it bloks the space bar
+boolean keySPressed = false;           //if it's true it bloks the key 's'  
+boolean startSolution = false;         //if true you can press the key 's'
+boolean printlnSomeStuff = false;      //for userinterface
+boolean printlnSomeOderStuff = false;  //for userinterface
 boolean solved = false;
 
-Move currentMove;
+Move currentMove; //declare objects
 Move move[];
 Cross cross;
 Solution solution;
@@ -91,51 +89,50 @@ PLL pll;
 
 void setup()  {
   
-  String portName = Serial.list()[4];
   //printArray(Serial.list());
+  String portName = Serial.list()[2]; //4 //declare serial port and begin comunication 
   port = new Serial(this, portName, 9600);
   whatch = new Stopwatch(this);
   fil = createFont("Arial",50);
   
-  size(1000, 600, P3D); // P3D per rappresentare il cubo in uno spazio 3D
+  size(2000, 1200, P3D); // P3D for rappresenting the cube in a 3D space
   //fullScreen(P3D);
 
   solutionArray = null;
   solution = new Solution();
   
-  cam = new PeasyCam(this, 400); //libreria per oggetti 3D
+  cam = new PeasyCam(this, 400); //library for 3D viewing objects
   
-  int index = 0;                                   //do una posizione ad ogni cubettto
-  for (int x = -1; x <= 1; x++) {                  //passo tutte le 27 possibile combinazioni di posizioni
+  int index = 0;                                   //I give a position to each cube
+  for (int x = -1; x <= 1; x++) {                  //I cicle all 27 possible combinations of positions
    for (int y = -1; y <= 1; y++) { 
     for (int z = -1; z <= 1; z++) {          
-      PMatrix3D matrix = new PMatrix3D();         //creo una matrice 3D. ogni cubetto ha una propria matrice in un proprio sapazio 3D
-      matrix.translate(x, y, z);                  // inserisco la posizione nella matrice. 
-      cube[index] = new cubie(matrix, x , y, z);  //assegno al cubetto la sua matrice di posizine e per ridondanza anche i valori in variabili separate  
-      index++;                                    //ripeto per ogni cubetto
+      PMatrix3D matrix = new PMatrix3D();         //I create a 3D matrix. each cube has its own matrix in its own 3D sapace
+      matrix.translate(x, y, z);                  //assigning the position to the matrix
+      cube[index] = new cubie(matrix, x , y, z);  //create cubie oject
+      index++;                                    
       }
     }
   }
   
-  for (int i = 0; i < scrambled +1; i++) { 
-    int r = int(random(allMoves.length - 6)); // sceglie un numero a caso 
-    scrambledArray [i] = r; // aggiunge il numero al vettore
+  for (int i = 0; i < scrambled +1; i++) { // create random generated scramble sequence of moves
+    int r = int(random(allMoves.length - 6));  
+    scrambledArray [i] = r; 
     
     Move m = allMoves[r];
-    sequence.add(m);     //  salva il corrispondente movimento  
-    m.complete();        //  viene mischiato istantaneamente
-                         //  l'utente non lo vede
+    sequence.add(m);     //save the move in sequence
+    m.complete();        //istantly apply the move to the cube
   }
-    solution.createSolution(); //istantaneously solving the cube and saving the moves in an array
+    solution.createSolution(); //after scrambleling the cube istantaneously solve the cube and save the solution sequence in an array
     
-    sendScrambled = intToByte(addHammingPrity(scrambledArray));
+    sendScrambled = intToByte(addHammingPrity(scrambledArray)); //add a control value to the sequence and convert it in bytes
     sendSolution = intToByte(addHammingPrity(solutionArray));
-    print(scrambledArray);
-    println();
-    printArray(solutionArray);
+    //print(scrambledArray);
+    //println();
+    //printArray(solutionArray);
     
   
-  currentMove = sequence.get(counter);
+  currentMove = sequence.get(counter); // set currentMove to the firs move in the sequence
 
 
 }
@@ -152,30 +149,11 @@ void draw() {
   rotateX(-0.5);
   rotateY(-0.5);
   rotateZ(0.1);
-  
-  
-  
-  
-  
- /* while(port.available() > 0){  // printing data from arduino
-      recived = port.read();
-       if(recived == 32){
-         println(" ");
-       }
-       //else if(recived == 60){
-       //  print("chek digit:     ");
-       //}
-       else{
-         print(recived);
-         print(", ");
-       }
-    }*/
-    
 
   
   if(calculatingFinished){      // going through the sequence(arraylist of random moves)
-    currentMove.update();
-    if(counter == scrambled && currentMove.finished){  // if sequence if finisched set startSolution to true, wich permits to press the key 's' and add the solution to the sequence
+    currentMove.update();       //update the angle and positions if angle is grater than 90°
+    if(counter == scrambled && currentMove.finished){  // if sequence is finisched set startSolution to true, wich permits to press the key 's' and add the solution to the sequence
       startSolution = true;
         if(printlnSomeStuff != true){
           println("schiaccia 's'per risolvere.");
@@ -201,16 +179,16 @@ void draw() {
     }
         
     scale(45);
-    for (int i = 0; i < cube.length; i++) {
+    for (int i = 0; i < cube.length; i++) { //animation of currentMove
       push();
-      if (abs(cube[i].z) > 0 && cube[i].z == currentMove.z) {
+      if (abs(cube[i].z) > 0 && cube[i].z == currentMove.z) { //if currenMove has a Z component turn the specific cubies in that direction. the angle determins the amount of movement
         rotateZ( currentMove.angle);
-      } else if (abs(cube[i].x) > 0 && cube[i].x == currentMove.x) {
+      } else if (abs(cube[i].x) > 0 && cube[i].x == currentMove.x) {//if currenMove has a X component turn the specific cubies in that direction. the angle determins the amount of movement
           rotateX( currentMove.angle);
-      } else if (abs(cube[i].y) > 0 && cube[i].y == currentMove.y) {
+      } else if (abs(cube[i].y) > 0 && cube[i].y == currentMove.y) {//if currenMove has a Y component turn the specific cubies in that direction. the angle determins the amount of movement
           rotateY( -currentMove.angle);
-      }
-      cube[i]. show();
+      }                                 //animation is archived by moving the turns by a small amount every time draw() updates. if the move is completed we animate the next move in the sequence 
+      cube[i]. show(); // display cubies in curret position
       pop();
       
     }
