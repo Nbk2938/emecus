@@ -1,4 +1,4 @@
-This Arduino Workspace contains the program that works in paralel to the Rubikscube8 programm on the arduino of my robot.
+This Arduino Workspace contains the first arduino program version of my robot.
 
 - it takes the data Recived via serial control
 - it makes a simple parity chek
