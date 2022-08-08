@@ -1,8 +1,8 @@
 
-def r(string3):
-    charlist = list(string3)
+def r(string3): # R move applied to cube string
+    charlist = list(string3) #trasform string to char list
     
-    char2 = charlist[2]
+    char2 = charlist[2] # interchange specific charachters of sides
     char5 = charlist[5]
     char8 = charlist[8]
     charlist[2] = charlist[20]
@@ -18,7 +18,7 @@ def r(string3):
     charlist[48] = char5
     charlist[45] = char8
 
-    char9 = charlist[9]
+    char9 = charlist[9] # interchange specific charachters of R face
     char10 = charlist[10]
     charlist[9] = charlist[15]
     charlist[10] = charlist[12]
@@ -29,10 +29,10 @@ def r(string3):
     charlist[11] = char9
     charlist[14] = char10
 
-    string4 = "".join(charlist)
+    string4 = "".join(charlist) # join charachters into string
     return string4
 
-def l(string3):
+def l(string3): # L move applied to cube string
     charlist = list(string3)
     
     char0 = charlist[0]
@@ -65,7 +65,7 @@ def l(string3):
     string4 = "".join(charlist)
     return string4
 
-def f(string3):
+def f(string3): # F move applied to cube string
     charlist = list(string3)
     
     char6 = charlist[6]
@@ -98,7 +98,7 @@ def f(string3):
     string4 = "".join(charlist)
     return string4
 
-def b(string3):
+def b(string3): # B move applied to cube string
     charlist = list(string3)
     
     char0 = charlist[0]
@@ -131,7 +131,7 @@ def b(string3):
     string4 = "".join(charlist)
     return string4
 
-def u(string3):
+def u(string3): # U move applied to cube string
     charlist = list(string3)
     
     char18 = charlist[18]
@@ -164,7 +164,7 @@ def u(string3):
     string4 = "".join(charlist)
     return string4
 
-def d(string3):
+def d(string3): # D move applied to cube string
     charlist = list(string3)
     
     char24 = charlist[24]
