@@ -11,7 +11,7 @@ the results can be seen on youtube:
 It contains varius programms:
 
 - in the folder rupy (python) you'll find:
-  - the same program written in python code with the implementation of the two phase algorithm of Kochiemba 
+  - the program written in python code with the implementation of the two phase algorithm of Kochiemba 
   - the programm with the fastest resolution time
   - to view the hole code just download the hole package and open it with vs Code
   
@@ -25,5 +25,5 @@ It contains varius programms:
   - all the "SchetchIno" files are written in C++ and are .ino files:
     - to look at the code just go to the file of interest
     - to look the code of a hole programm download the folder in a the programm directory 
-      such as "sketchIno3" and open the folder with Arduino studio (IDE)
+      such as "sketchIno1" and open the folder with Arduino studio (IDE)
   
