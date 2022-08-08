@@ -3,24 +3,29 @@ import random
 import move
 import serial
 import time
+import keyboard 
+import pynput
 
-ser = serial.Serial(port='COM8', baudrate=9600, timeout=.01)
+from pynput.keyboard import Key, Controller
+kb = Controller()
 
-def control(new,old):
+ser = serial.Serial(port='COM10', baudrate=9600, timeout=.01) # open serial comunication with arduino
+
+def control(new,old):           # guarantees a good scramble
     
     if int(new /3) == int(old /3):
         a = False
     else:
         a = True
     return a
-def scramble(index):
+def scramble(index):            # scramble function
     count = 0
     scramble = []
     oldnum = 18
     
     while index > count:
         newnum = random.randint(0,17)
-        if control(newnum,oldnum) == False:
+        if control(newnum,oldnum) == False: # do not repeat a move in the same category (ex:R,R',R2)
             continue
         else:
             scramble.append(newnum)
@@ -28,12 +33,12 @@ def scramble(index):
             count += 1
 
     return scramble
-def write_read(x):
+def write_read(x):              # write and recive message. serial port control
     ser.write(bytes(str(x), 'utf-8'))
     time.sleep(0.1)
     data = ser.readline()
     return data
-def add(list):
+def add(list):                  #check message. do not need it
     newlist = []
 
     bl = str(bin(len(list)))
@@ -118,70 +123,70 @@ def transformArray(list1):
         else:
             continue
     return solution
-def scrumblestring(string1):
+def scrumblestring(string1):    # permute string 
     
-    for x in scramblearray:
+    for x in scramblearray: 
         
         if x == 0:
-            string1 = move.r(string1)
+            string1 = move.r(string1) # R
         elif x == 1:
-            string1 = move.r(string1)
+            string1 = move.r(string1) # R'
             string1 = move.r(string1)
             string1 = move.r(string1)
         elif x == 2:
-            string1 = move.r(string1)
+            string1 = move.r(string1) # R2
             string1 = move.r(string1)
         elif x == 3:
-            string1 = move.l(string1)
+            string1 = move.l(string1) # L
         elif x == 4:
-            string1 = move.l(string1)
+            string1 = move.l(string1) # L'
             string1 = move.l(string1)
             string1 = move.l(string1)
         elif x == 5:
-            string1 = move.l(string1)
+            string1 = move.l(string1) # L2
             string1 = move.l(string1)
         elif x == 6:
-            string1 = move.f(string1)
+            string1 = move.f(string1) # F
         elif x == 7:
-            string1 = move.f(string1)
+            string1 = move.f(string1) # F'
             string1 = move.f(string1)
             string1 = move.f(string1)
         elif x == 8:
-            string1 = move.f(string1)
+            string1 = move.f(string1) # F2
             string1 = move.f(string1)
         elif x == 9:
-            string1 = move.b(string1)
+            string1 = move.b(string1) # B
         elif x == 10:
-            string1 = move.b(string1)
+            string1 = move.b(string1) # B'
             string1 = move.b(string1)
             string1 = move.b(string1)
         elif x == 11:
-            string1 = move.b(string1)
+            string1 = move.b(string1) # B2
             string1 = move.b(string1)
         elif x == 12:
-            string1 = move.u(string1)
+            string1 = move.u(string1) # U
         elif x == 13:
-            string1 = move.u(string1)
+            string1 = move.u(string1) # U'
             string1 = move.u(string1)
             string1 = move.u(string1)
         elif x == 14:
-            string1 = move.u(string1)
+            string1 = move.u(string1) # U2
             string1 = move.u(string1)
         elif x == 15:
-            string1 = move.d(string1)
+            string1 = move.d(string1) # D
         elif x == 16:
-            string1 = move.d(string1)
+            string1 = move.d(string1) # D'
             string1 = move.d(string1)
             string1 = move.d(string1)
         else:
-            string1 = move.d(string1)
+            string1 = move.d(string1) # D2
             string1 = move.d(string1)
         
 
     return string1
-scramblearray = scramble(25)
-scrambled = []
-for turn in scramblearray:
+scramblearray = scramble(25)    # create a scranmble sequence of numbers
+scrambled = []                  # initialize scramble sequence of moves
+for turn in scramblearray:      # assign a move value to each element of scramblearray
     if turn == 0:
         #solution.append(0)
         scrambled.append('D')
@@ -239,23 +244,48 @@ for turn in scramblearray:
     else:
         continue
 print(scrambled)
-sc = ''.join(scrambled)
-originalcubestring = "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"
-scrumbledcubestring = scrumblestring(originalcubestring)
-a = sv.solve(scrumbledcubestring,19,2)
-alist = a.split(" ")
+sc = ''.join(scrambled)         # transform into a move string
+originalcubestring = "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB" # definition of original cube string
+scrumbledcubestring = scrumblestring(originalcubestring)                      # scrambel cube string with privius sequence
+a = sv.solve(scrumbledcubestring,19,2)                                        # cociemba algorithm applied to scramble cube string
+alist = a.split(" ")                          #split solution at spaces
 
-solutionarray = transformArray(alist)
+solutionarray = transformArray(alist)         # transform array into readable array as scramblearray
 print(solutionarray)
-so = ''.join(solutionarray)
+so = ''.join(solutionarray)                   # convert to string
 
 time.sleep(1.700)
-value = write_read(sc)
+value = write_read(sc)                        # transform scrablestring to byte string (utf_8) and send it to arduino
 print(value)
 
-time.sleep(10)
-value = write_read(so)
-print(value)
+time.sleep(5)                                 # give arduino time to execute the moves
+print("presss spacebar for solving the cube")
 
+while True:  
+    try:                                      # used try so that if user pressed other than the given key error will not be shown
+        if keyboard.is_pressed('space'):      # if spacebar is pressed 
+            t1 = time.perf_counter()          # begin timer
+            value = write_read(so)            # send solution
+            print(value)
+
+            kb.press(Key.backspace)           # once it's pressed delete it from the terminal
+            kb.release(Key.backspace)
+            break  
+    except:
+        kb.press(Key.backspace)               # if other key is pressed clear it from the terminal
+        kb.release(Key.backspace)
+        break 
+
+while (1):
+    if(ser.in_waiting > 0):                   # once arduino sends a value the solution is finished
+        print("solution took: ")
+        print(str(time.perf_counter() - t1) + " seconds")       # stopwatch
+        break
+
+        """serialString = ser.readline()      # i don't really need to check the value
+        if serialString.decode('Ascii') == "A":
+            print(time.perf_counter() - t1)
+            break"""
+          
 
 
