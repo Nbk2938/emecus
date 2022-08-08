@@ -1,5 +1,5 @@
 
-void concatenateSolution(int partialSolution[]){
+void concatenateSolution(int partialSolution[]){ // concatenate integer arrays in to one
   if (solutionArray == null){
       solutionArray = partialSolution;
     }else {
@@ -8,24 +8,26 @@ void concatenateSolution(int partialSolution[]){
 }
 
 
-void sleep(int a){
+void sleep(int a){ // thread sleep. i'm not using this function 
   try{
     Thread.sleep(a);
    } catch (Exception e){}
 }
 
-void send(String s){
+void send(String s){ //send string to arduino
   int len = s.length();
+  //print(s);
   
   port.write(s);
   //println(s);
   //println("");
   
-  delay(int(len * 6.55)); // stima approssimativa
-  port.write('A');
+  delay(int(len * 6.55)); // estimated time for string to be read
+  port.write('A'); //string finisched  
+  //delay(int(len * 6.55));
 }   
 
-String binaryString(int []num){
+String binaryString(int []num){ //convertion into binary string
   String bitString = "";
   for(int i=0; i< num.length; i++){
     bitString += binary(num[i], 8);   //using utf-8
@@ -34,7 +36,7 @@ String binaryString(int []num){
 }
 
 
-String xor(String [] pos){
+String xor(String [] pos){ // xor function
   String paritybits = "";
   for(int i=0; i< 10;i++){
     int ones = 0;
@@ -53,7 +55,7 @@ String xor(String [] pos){
   return paritybits;
 }
 
-String hamming(String norm){
+String hamming(String norm){//hamming encoding applied to a bit string
   
   int num_of_parity_digits = 1;
   int count = 3;
@@ -108,10 +110,11 @@ String hamming(String norm){
   //println(parity);
   //println(no_ones);
   String hamming = String.valueOf(bits);
+  println(hamming);
   return hamming;
 }
 
-int parityDigit(int []c){  // simile a GTIN-chekdigit
+int parityDigit(int []c){  // simile a GTIN-chekdigit. i'm not using this function
   int parity;
   int sum = 0;
   int hammingArray [] = new int[c.length];
@@ -131,7 +134,7 @@ int parityDigit(int []c){  // simile a GTIN-chekdigit
   return parity;
 }
 
-byte[] intToByte (int []integer){
+byte[] intToByte (int []integer){ // int array in to byte array
   
   byte bite [] = new byte [integer.length];
   for(int i = 0; i < bite.length; i++){
@@ -140,7 +143,7 @@ byte[] intToByte (int []integer){
   return bite;
 }
 
-void Text(){
+void Text(){ //some text for user interace
   if (counter > scrambled -1) {    
     text(counter - scrambled , 120, 100);
     text("movimenti",160,100);
