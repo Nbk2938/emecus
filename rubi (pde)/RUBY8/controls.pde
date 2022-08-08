@@ -1,40 +1,37 @@
    
    
-void keyPressed() {                    // interface for the user
+void keyPressed() {                   // for user interface
 
   if (key == ' '){
-    if(spacePressed != true){
+    if(spacePressed != true){ //begin scramble process
       cam.reset();
       println("random scramble...");
       println(" ");
       println("scrambled array sent to ardino ");
-      send(sendScrambled);
+      send(sendScrambled); //send scramble sequence to arduino
       
       sleep(900);
       
       currentMove.start();
-      spacePressed = true;
+      spacePressed = true; // start the animation 
       
     }
   }
-  if (key == 's'){   // send solution to seril port
+  if (key == 's'){   // begin solution process
     if(keySPressed != true){
       if(startSolution){
        
         println("risolvendo...");
         println(" ");
-        //println("sequenza di movimetni fatti(random + solution):");
-        //println(sequence);
-        //println(" ");
         println("solution array sent to ardino");
-        send(sendSolution);
+        send(sendSolution); // send solution sequence to arduino
         cam.reset();
         
         sleep(1500); //1500 
         
         whatch.start(); //start stopwatch 
         
-        for(int i : solutionArray){ 
+        for(int i : solutionArray){   // addind the solution to the animation sequence 
           Move q = allMoves[i];
           sequence.add(q);
           keySPressed = true;
