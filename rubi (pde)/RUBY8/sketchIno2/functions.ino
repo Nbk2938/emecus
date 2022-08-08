@@ -1,5 +1,5 @@
 
-String decToBinary(int n){
+String decToBinary(int n){ // decimal to binary
   String out = "";
   int binaryNum[10];
   int i=0;
@@ -13,18 +13,10 @@ String decToBinary(int n){
   }
   return out;
 }
-String binaryToDec(String str){
+
+String binaryToDec(String str){ // binnary ti decimal
   String sum;
-  /*int l = str.length()+ 1 ;  //always 8 ?
-  char chars[l];
-  str.toCharArray(chars,l);
-  
-  for(int i = 0; i < 8; i++){
-    if(str[i] == '1'){
-      sum += pow(2,(7 - i));
-    }
-  }
-  Serial.println(String(sum));*/
+
   if(str == "00000000"){
     sum = "0";
   }else if(str == "00000001"){
@@ -53,7 +45,7 @@ String binaryToDec(String str){
   return sum;
 }
 
-String Xor(String pos_one []){
+String Xor(String pos_one []){ // xor function 
   String paritybits = "";
   for(int i=0; i< 10;i++){
     int ones = 0;
@@ -72,7 +64,7 @@ String Xor(String pos_one []){
   return paritybits;
 }
 
-bool Hamming(char bit_list [],int leng){  //  chek method of controlling the data recived
+bool Hamming(char bit_list [],int leng){  // chek method for controlling the data recived
 
   bool total_parity;
   int num_ones = 0;
@@ -98,119 +90,89 @@ bool Hamming(char bit_list [],int leng){  //  chek method of controlling the dat
     }
   }
   String parity = Xor(pos);
-  //Serial.println(parity);
-  if(parity != "0000000000"){
+  if(parity != "0000000000"){ // if xor(position of one bits) = 0 -> message is good for processing, no errors detected
     total_parity = false;
   }
   return total_parity;
 }  
 
-/*void Decode(char mes []){
-  //int mov [int(sizeof(mes) / 8)]
-  int count = 0;
-  
-  while(count < sizeof(moves)){
-    String bitstring = "";
-    for(int i = count * 8; i < (count+1) * 8; i++){
-      bitstring += mes[i];
-    }
-    moves[count] = binaryToDec(bitstring);
-  }
-  
-}*/
-
-void resetCommandTimeout()
-{
-  tic1.resetCommandTimeout();
-  tic2.resetCommandTimeout();
-  tic3.resetCommandTimeout();
-  tic4.resetCommandTimeout();
-  tic5.resetCommandTimeout();
-  tic6.resetCommandTimeout();
-}
-
-// Delays for the specified number of milliseconds while
-// resetting the Tic's command timeout so that its movement does
-// not get interrupted by errors.
-void delayWhileResettingCommandTimeout(uint32_t ms)
-{
-  uint32_t start = millis();
-  do
-  {
-    resetCommandTimeout();
-  } while ((uint32_t)(millis() - start) <= ms);
-}
-
 void stepped(String a[], int count){
- //int b = sizeof(a);
- //Serial.write(b);
   
-  for(int i = 0; i< count; i++){  //blue face is the front side
-
+  for(int i = 0; i< count - 1; i++){  //blue face is the front side         //WTF count - 1 ?????????????????????????????????????
+ 
     if(a[i] == "0"){                        //D'
       tic1.setTargetPosition(400);
-      delay(whaitTillFinished); //delayWhileResettingCommandTimeout(whaitTillFinished); 
+      delay(whaitTillFinished); 
       tic1.haltAndSetPosition(0);
     }
     else if(a[i] == "1"){                   //D
       tic1.setTargetPosition(-400);
-      delay(whaitTillFinished); //delayWhileResettingCommandTimeout(whaitTillFinished);
+      delay(whaitTillFinished);
       tic1.haltAndSetPosition(0);
     }
     else if(a[i] == "2"){                    //U
       tic2.setTargetPosition(-400);
-      delay(whaitTillFinished); //delayWhileResettingCommandTimeout(whaitTillFinished);
+      delay(whaitTillFinished); 
       tic2.haltAndSetPosition(0);
     }
     else if(a[i] == "3"){                    //U'
       tic2.setTargetPosition(400);
-      delay(whaitTillFinished); //delayWhileResettingCommandTimeout(whaitTillFinished);
+      delay(whaitTillFinished);
       tic2.haltAndSetPosition(0);
     }
     else if(a[i] == "4"){                    //R
       tic4.setTargetPosition(-400);
-      delay(whaitTillFinished); //delayWhileResettingCommandTimeout(whaitTillFinished);
+      delay(whaitTillFinished);
       tic4.haltAndSetPosition(0);
     }
     else if(a[i] == "5"){                   //R'
       tic4.setTargetPosition(400);
-      delay(whaitTillFinished); //delayWhileResettingCommandTimeout(whaitTillFinished);
+      delay(whaitTillFinished); 
       tic4.haltAndSetPosition(0);
     }
     else if(a[i] == "6"){                   //L'
       tic6.setTargetPosition(400);
-      delay(whaitTillFinished); //delayWhileResettingCommandTimeout(whaitTillFinished);
+      delay(whaitTillFinished); 
       tic6.haltAndSetPosition(0);
     }
     else if(a[i] == "7"){                  //L
       tic6.setTargetPosition(-400);
-      delay(whaitTillFinished); //delayWhileResettingCommandTimeout(whaitTillFinished);
+      delay(whaitTillFinished); 
       tic6.haltAndSetPosition(0);
     }
     else if(a[i] == "8"){                  //F
       tic3.setTargetPosition(-400);
-      delay(whaitTillFinished); //delayWhileResettingCommandTimeout(whaitTillFinished);
+      delay(whaitTillFinished); 
       tic3.haltAndSetPosition(0);
     }
     else if(a[i] == "9"){                  //F'
       tic3.setTargetPosition(400);
-      delay(whaitTillFinished); //delayWhileResettingCommandTimeout(whaitTillFinished);
+      delay(whaitTillFinished); 
       tic3.haltAndSetPosition(0);
     }
     else if(a[i] == "10"){                 //B'
       tic5.setTargetPosition(400);
-      delay(whaitTillFinished); //delayWhileResettingCommandTimeout(whaitTillFinished);
+      delay(whaitTillFinished); 
       tic5.haltAndSetPosition(0);
     }
     else if(a[i] == "11"){                 //B
       tic5.setTargetPosition(-400);
-      delay(whaitTillFinished); //delayWhileResettingCommandTimeout(whaitTillFinished);
+      delay(whaitTillFinished); 
       tic5.haltAndSetPosition(0);
     }
-    //else{
-    //  resetCommandTimeout();
-    //}
+    
   }
+  if (a[count - 2] == "0"){                           //WTF, whyyyyyy ????????????????????????????
+    tic1.setTargetPosition(-400);            //D
+    delay(whaitTillFinished); 
+    tic1.haltAndSetPosition(0);
+  }
+  else if(a[count - 2] == "1"){
+    tic1.setTargetPosition(400);            //D'
+    delay(whaitTillFinished); 
+    tic1.haltAndSetPosition(0);
+  }
+  
   
 }
 
