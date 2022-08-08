@@ -1,21 +1,21 @@
 class PLL{
 
 
-void startPLL(){ //partial solution. completes the hole cube.permutation of thre last layer
+void startPLL(){  //partial solution. completes the hole cube.permutation of thre last layer
   int[] temp_0 = lastLayerPermutation_0(); //it's a nightmare. just cicle trugh every single permutation and different rotations
-  int[] temp_1 = lastLayerPermutation_1(); 
-  int[] temp_2 = lastLayerPermutation_2(); 
-  
-  if(temp_0 != null){                    
-    concatenateSolution(temp_0);
-    for(int i : temp_0){
-      Move q = allMoves[i];
-      //sequenceSolve.add(q);
-      q.complete();
-    }
+  int[] temp_1 = lastLayerPermutation_1();
+  int[] temp_2 = lastLayerPermutation_2();
+    
+    if(temp_0 != null){
+      concatenateSolution(temp_0);
+      for(int i : temp_0){
+        Move q = allMoves[i];
+        //sequenceSolve.add(q);
+        q.complete();
+      }
     //println("cubo completo");
   }
-  else if(temp_1 != null){
+  else  if(temp_1 != null){
     concatenateSolution(temp_1);
     for(int i : temp_1){
       Move q = allMoves[i];
@@ -24,7 +24,7 @@ void startPLL(){ //partial solution. completes the hole cube.permutation of thre
     }
    //println("cubo completo");
   }
-  else if(temp_2 != null){
+  else  if(temp_2 != null){
     concatenateSolution(temp_2);
     for(int i : temp_2){
       Move q = allMoves[i];
@@ -1463,7 +1463,7 @@ int[] lastLayerPermutation_0(){
 
   return pll;
 }
-//---------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------
 int[] lastLayerPermutation_1(){
   int[] pll = null;
   
@@ -1718,6 +1718,17 @@ int[] lastLayerPermutation_1(){
   if((cube[1].x==0)&&(cube[1].z==-1)){
   if((cube[18].x==-1)&&(cube[18].z==-1)){
       int[] temp = {3, 3, 9, 2, 2, 8, 2, 2, 9, 7, 8, 2, 9, 3, 9, 6, 8, 8, 3};
+      pll = temp;
+  }}}}}}}}
+  if((cube[2].x==1)&&(cube[2].z==1)){
+  if((cube[11].x==0)&&(cube[11].z==1)){
+  if((cube[0].x==-1)&&(cube[0].z==1)){
+  if((cube[1].x==1)&&(cube[1].z==0)){
+  if((cube[9].x==-1)&&(cube[9].z==0)){  //108'''  per 9, 0, 2, 19 con orientamento corretto
+  if((cube[18].x==1)&&(cube[18].z==-1)){
+  if((cube[19].x==0)&&(cube[19].z==-1)){
+  if((cube[20].x==-1)&&(cube[20].z==-1)){
+      int[] temp = {2, 9, 2, 2, 8, 2, 2, 9, 7, 8, 2, 9, 3, 9, 6, 8, 8, 3};
       pll = temp;
   }}}}}}}}
   if((cube[2].x==1)&&(cube[2].z==1)){
@@ -3174,7 +3185,7 @@ int[] lastLayerPermutation_1(){
   }}}}}}}}  
   return pll;
 }
-//------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------
 int[] lastLayerPermutation_2(){
   int[] pll = null;
   
